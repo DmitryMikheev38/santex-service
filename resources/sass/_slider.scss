@@ -1,0 +1,15 @@
+.slider {
+    width: 100%;
+    height: 700px;
+    position: relative;
+    overflow: hidden;
+}
+
+.image-group {
+    transition: 1s;
+    height: inherit;
+}
+
+.image {
+    float: left;
+}

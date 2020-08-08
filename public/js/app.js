@@ -19332,6 +19332,8 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./slider */ "./resources/js/slider.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -19363,6 +19365,72 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/slider.js":
+/*!********************************!*\
+  !*** ./resources/js/slider.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var _this = this;
+
+window.onload = function () {
+  document.querySelectorAll('.slider').forEach(function (s) {
+    var images = s.getAttribute('data-images').split(',');
+    var imageGroup = document.createElement('div');
+    imageGroup.classList.add('image-group', 'slider__image-group');
+    images.forEach(function (img, idx, arr) {
+      var el = document.createElement('img');
+      el.style.width = s.offsetWidth + 'px';
+      el.classList.add('image', 'slider__image');
+      el.setAttribute('src', "./images/".concat(img));
+      imageGroup.appendChild(el);
+
+      if (idx + 1 === arr.length) {
+        var lastEl = document.createElement('img');
+        lastEl.style.width = s.offsetWidth + 'px';
+        lastEl.classList.add('image', 'slider__image');
+        lastEl.setAttribute('src', "./images/".concat(images[0]));
+        imageGroup.appendChild(lastEl);
+      }
+    });
+    s.appendChild(imageGroup);
+    imageGroup.style.width = imageGroup.childNodes[0].offsetWidth * imageGroup.childNodes.length + 'px';
+    s.interval = setTimeout(function tick(el) {
+      var t = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+      s.timeout = 7000;
+      t++;
+
+      if (t > el.childNodes.length - 1) {
+        t = 0;
+        el.style.transition = '0s';
+        el.style.transform = "translateX(-".concat(el.childNodes[0].offsetWidth * t, "px)");
+        setTimeout(function () {
+          el.style.transition = '1s';
+        }, 0);
+        s.timeout = 0;
+      } else {
+        el.style.transform = "translateX(-".concat(el.childNodes[0].offsetWidth * t, "px)");
+      }
+
+      s.interval = setTimeout(tick.bind(this, el, t), s.timeout);
+    }.bind(_this, imageGroup), 7000);
+  });
+};
+
+window.addEventListener('resize', function () {
+  document.querySelectorAll('.slider').forEach(function (s) {
+    var imageGroup = s.children[0];
+    var images = imageGroup.childNodes;
+    images.forEach(function (img) {
+      img.style.width = s.offsetWidth + 'px';
+    });
+    imageGroup.style.width = s.offsetWidth * images.length + 'px';
+  });
+});
 
 /***/ }),
 
