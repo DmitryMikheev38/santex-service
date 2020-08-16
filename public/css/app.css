@@ -5,8 +5,10 @@
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  color: #262626;
+  font-family: Open Sans, Helvetica, Arial, sans-serif;
+  height: 100%;
+  width: 100%;
+  color: rgba(38, 38, 38, 0.9);
 }
 
 .slider {
@@ -23,5 +25,90 @@ body {
 
 .image {
   float: left;
+}
+
+.wrapper {
+  max-width: 1024px;
+  margin: auto;
+  padding: 20px;
+}
+
+.line {
+  max-width: 984px;
+  margin: auto;
+  height: 3px;
+  background-color: rgba(0, 153, 153, 0.5);
+}
+
+.h1,
+.h2 {
+  text-align: center;
+}
+
+.h3 {
+  padding-left: 5px;
+  padding-right: 5px;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+}
+
+.h3::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  min-height: 50%;
+  background-color: rgba(0, 153, 153, 0.5);
+  z-index: -1;
+}
+
+.info {
+  font-style: italic;
+  font-weight: bold;
+  line-height: 20px;
+}
+
+.list {
+  list-style-type: none;
+  padding-left: 20px;
+  font-size: 19px;
+}
+
+.list li {
+  position: relative;
+  line-height: 28px;
+  padding-left: 10px;
+}
+
+.list li::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  left: -15px;
+  top: 8px;
+  line-height: 28px;
+  background-color: rgba(0, 153, 153, 0.5);
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
+}
+
+.footer-date {
+  display: block;
+  font-size: 19px;
+  text-align: center;
+}
+
+.content__h3,
+.content__h2,
+.content__info {
+  margin-top: 30px;
+}
+
+.content__list {
+  margin-top: 10px;
 }
 
