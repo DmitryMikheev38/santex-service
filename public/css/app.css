@@ -9,6 +9,7 @@ body {
   height: 100%;
   width: 100%;
   color: rgba(38, 38, 38, 0.9);
+  background-color: #fafafa;
 }
 
 .slider {
@@ -18,6 +19,16 @@ body {
   overflow: hidden;
 }
 
+.slider::before {
+  content: " ";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  background: linear-gradient(rgba(250, 250, 250, 0) 30%, #fafafa 100%);
+  z-index: 100;
+}
+
 .image-group {
   transition: 1s;
   height: inherit;
@@ -25,6 +36,12 @@ body {
 
 .image {
   float: left;
+}
+
+@media (max-width: 480px) {
+  .slider {
+    height: 200px;
+  }
 }
 
 .wrapper {
@@ -58,8 +75,8 @@ body {
   display: block;
   position: absolute;
   bottom: 0;
-  left: 0;
-  width: 100%;
+  left: -40px;
+  width: calc(100% + 40px);
   min-height: 50%;
   background-color: rgba(0, 153, 153, 0.5);
   z-index: -1;
@@ -102,13 +119,38 @@ body {
   text-align: center;
 }
 
-.content__h3,
-.content__h2,
-.content__info {
+.title-block,
+.info-block {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 480px) {
+  .h1 {
+    font-size: 25px;
+  }
+}
+
+.landing__h2,
+.title-block,
+.info-block {
   margin-top: 30px;
 }
 
-.content__list {
+.landing__list {
   margin-top: 10px;
+}
+
+.landing__h3 {
+  vertical-align: middle;
+  height: 30px;
+}
+
+.landing__icon {
+  margin-left: 5px;
+}
+
+.landing__info {
+  padding-left: 20px;
 }
 
